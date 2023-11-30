@@ -2,5 +2,5 @@
 
 ### _Code coming soon! Stay tuned._
 
-### Project page: [yudeng.github.io/Portrait4D/](yudeng.github.io/Portrait4D/)
+### Project page: [https://yudeng.github.io/Portrait4D/](https://yudeng.github.io/Portrait4D/)
 
