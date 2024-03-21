@@ -1,6 +1,6 @@
 # Portrait4D and Portrait4D-v2
 
-### We plan to release the code of Portrait4D on April. Stay tuned.
+### We plan to release the code of Portrait4D in April. Stay tuned.
 
 ### Project page: 
 
