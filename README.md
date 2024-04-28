@@ -1,6 +1,7 @@
 # Portrait4D and Portrait4D-v2
 
-### We plan to release the code of Portrait4D in April. Stay tuned.
+### _Update: 2024.4.28_
+### The code and pre-trained models for portrait4D and portrait4D-v2 will be available in the next few days. Stay tuned.
 
 ### Project page: 
 
