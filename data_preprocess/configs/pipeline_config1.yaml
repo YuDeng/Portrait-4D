@@ -1,0 +1,77 @@
+#################################################
+# Copyright (c) 2021-present, xiaobing.ai, Inc. #
+# All rights reserved.                          #
+#################################################
+# CV Research, DEV(USA) xiaobing.               #
+# written by wangduomin@xiaobing.ai             #
+#################################################
+
+# experiment name
+
+# train type
+trainer_type: "none"
+dataset_type: "inference"
+
+# network configuration and defination
+model:
+  # facerecon network (deep3d)
+  facerecon:
+    name: "deep3d_2023"
+    model_type: "facerecon"
+    model_cls: "FaceReconModel"
+    net_recon: "resnet50"
+    use_last_fc: False
+    init_path: ""
+    isTrain: False
+    checkpoints_dir: "assets/facerecon"
+    pretrained_name: "deep3d_2023"
+    epoch: 20
+    phase: "test"
+    use_ddp: False
+    parallel_names: ['net_recon']
+    bfm_folder: "assets/facerecon/bfm"
+  # fd network
+  fd:
+    model_name: "retinaface"
+    model_type: "fd"
+    model_cls: "faceDetector"
+    model_path: "assets/facedetect/retinaface/Resnet50_Final.pth"
+    thres: 0.8
+    nms_thres: 0.4
+    img_size: 640
+    config: {
+      'name': 'Resnet50',
+      'min_sizes': [[16, 32], [64, 128], [256, 512]],
+      'steps': [8, 16, 32],
+      'variance': [0.1, 0.2],
+      'clip': False,
+      'loc_weight': 2.0,
+      'gpu_train': True,
+      'batch_size': 24,
+      'ngpu': 4,
+      'epoch': 100,
+      'decay1': 70,
+      'decay2': 90,
+      'image_size': 840,
+      'pretrain': True,
+      'return_layers': {'layer2': 1, 'layer3': 2, 'layer4': 3},
+      'in_channel': 256,
+      'out_channel': 256
+    }
+  
+  # ldmk network
+  ldmk:
+    model_name: "h3r"
+    model_type: "ldmk"
+    model_cls: "ldmkDetector"
+    model_path: "assets/hrnet_w18_wflw/h3r/model.pth"
+    img_size: 256
+
+  # ldmk 3d network
+  ldmk_3d:
+    model_name: "ldmk3d"
+    model_type: "ldmk"
+    model_cls: "ldmk3dDetector"
+    model_path: "assets/landmark3d/3DFAN4-4a694010b9.zip"
+    model_depth_path: "assets/landmark3d/depth-6c4283c0e0.zip"
+    img_size: 256

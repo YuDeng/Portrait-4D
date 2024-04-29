@@ -1,0 +1,16 @@
+*.pyc
+*.pth
+*.pkl
+*.mat
+*.zip
+**/.ipynb_checkpoints
+portrait4d/pretrained_models/
+portrait4d/data/
+portrait4d/experiments/
+portrait4d/test-imgs/
+portrait4d/training-runs-genhead/
+portrait4d/training-runs-portrait4d/
+portrait4d/training-runs-portrait4d-v2/
+data_preprocess/bfm_to_flame/data/
+data_preprocess/bfm_to_flame/model/
+data_preprocess/bfm_to_flame/mesh/

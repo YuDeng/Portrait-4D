@@ -1,0 +1,14 @@
+coarse:
+  model:
+    flame_model_path: models/FLAME/geometry/generic_model.pkl
+    flame_lmk_embedding_path: models/FLAME/geometry/landmark_embedding_with_eyes.npy
+    flame_mask_pkl: models/FLAME/mask/FLAME_masks.pkl
+    ca_shape_param: models/FLAME/ca_shape.txt
+    ca_exp_param: models/FLAME/ca_exp.txt
+    ca_pose_param: models/FLAME/ca_pose.txt
+    simplify_baricentric: models/FLAME/simplify_baricentric2.npy
+    addition_info: models/FLAME/flame_addition_info_new_smallface.npy
+    n_shape: 100
+    n_tex: 50
+    n_exp: 50
+    n_pose: 6

@@ -1,0 +1,36 @@
+experiment: 'portrait4d-v2-vfhq512'
+cfg: 'vfhq'
+outdir: './training-runs-portrait4d-v2'
+data: './data/VFHQ_sub50_512_4/'
+gpus: 8
+batch: 32
+kimg: 18000
+g_module: 'training.reconstructor.triplane_reconstruct.TriPlaneReconstructorNeutralize'
+d_module: 'training.discriminator.dual_discriminator.DualDiscriminatorDeform'
+glr: 1e-4
+dlr: 1e-4
+g_has_superresolution: True
+g_has_background: True
+g_flame_full: True
+g_num_blocks_neutral: 4
+g_num_blocks_motion: 4
+g_motion_map_layers: 2
+d_has_superresolution: True
+d_has_uv: True
+d_has_seg: True
+patch_scale: 1.0
+use_ws_ones: False             # If true, ws==one for superresolution
+use_flame_mot: False           # If true, use flame parameters as motion embedding
+cross_lr_scale: 2.5            # Learning rate scaling factor for motion-related layers
+static: False                  # If true, disable all motion-control and learn static 3d reconstruction model instead
+resume: './pretrained_models/portrait4d-static-genhead512.pkl'        # Resume from pre-trained static model
+resume_kimg: 10000
+resume_fix: './pretrained_models/portrait4d-static-genhead512.pkl'    # Checkpoint of pre-trained static model for multi-view data synthesis
+snap: 10
+density_reg_every: 4
+density_reg: 1
+reg_type: 'G_fix_img'
+mot_aug_prob: 0.9              # Probability of using arbitrary-view driving image for motion embedding extraction
+g_fix_reg_img_aug: True        # Rescale the synthesized heads of static model to compensate for the scale inconsistency issue between heads with and without eye blink
+neural_rendering_resolution_initial: 128  
+max_num: -1                    # 'Max number of videos used for training', metavar='INT', type=click.IntRange(min=-1), default=-1, required=False, show_default=True

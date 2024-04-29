@@ -1,0 +1,34 @@
+experiment: 'portrait4d-static-genhead512'
+cfg: ''
+outdir: './training-runs-portrait4d'
+shape_n_c_params_path1: './data/ffhq_all_shape_n_c_params.npy'
+shape_n_c_params_path2: './data/vfhq_all_shape_n_c_params.npy'
+motion_params_path1: './data/ffhq_all_motion_params.npy'
+motion_params_path2: './data/vfhq_all_motion_params.npy'
+gpus: 8
+batch: 32
+kimg: 15000
+g_module: 'training.reconstructor.triplane_reconstruct.TriPlaneReconstructorNeutralize'
+d_module: 'training.discriminator.dual_discriminator.DualDiscriminatorDeform'
+glr: 1e-4
+dlr: 1e-4
+g_has_superresolution: True
+g_has_background: True
+g_flame_full: True
+g_num_blocks_neutral: 4
+g_num_blocks_motion: 4
+g_motion_map_layers: 2
+d_has_superresolution: True
+d_has_uv: True
+d_has_seg: True
+patch_scale: 1.0
+use_ws_ones: False             # If true, ws==one for superresolution
+use_flame_mot: False           # If true, use flame parameters as motion embedding
+truncation_psi: 0.95           # Truncation rate for GenHead synthesized data
+cross_lr_scale: 1.0            # Learning rate scaling factor for motion-related layers
+static: True                   # If true, disable all motion-control and learn static 3d reconstruction model instead
+resume_syn: './pretrained_models/genhead-ffhq512.pkl'    # Checkpoint of pre-trained GenHead for training data synthesis
+snap: 10
+density_reg_every: 16
+neural_rendering_resolution_initial: 64
+neural_rendering_resolution_final: 128

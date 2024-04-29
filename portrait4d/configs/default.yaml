@@ -1,0 +1,78 @@
+experiment: 'test'
+
+# Required.
+outdir: './training-runs'                  # 'Where to save the results'， metavar='DIR'
+cfg: 'ffhq'                    # 'Base configuration'
+data: None # 'Training data', metavar='[ZIP|DIR]'
+gpus: 1                        # 'Total batch size', metavar='INT', 
+gamma: 1.0                     # 'R1 regularization weight', metavar='FLOAT',
+gamma_uv: 10.0                     # 'R1 regularization weight of corespondence map', metavar='FLOAT',
+gamma_seg: 1.0                     # 'R1 regularization weight of segmentation mask', metavar='FLOAT',
+gamma_patch: 10.0
+batch: 2                       # help='Total batch size', metavar='INT',                         type=click.IntRange(min=1), default=8)
+g_module: None
+d_module: None
+d_patch_module: None
+triplane_resolution: 256
+triplane_channels: 192
+
+# Optional features.
+cond: True                     # help='Train conditional model', metavar='BOOL',                 type=bool, default=True, show_default=True)
+mirror: False                  # help='Enable dataset x-flips', metavar='BOOL',                  type=bool, default=False, show_default=True)
+aug: 'noaug'                   # help='Augmentation mode',                                       type=click.Choice(['noaug', 'ada', 'fixed']), default='noaug', show_default=True)
+resume: None                   # help='Resume from given network pickle', metavar='[PATH|URL]',  type=str)
+resume_kimg: 0
+freezed: 0                     # help='Freeze first layers of D', metavar='INT',                 type=click.IntRange(min=0), default=0, show_default=True)
+
+# Misc hyperparameters.
+p: 0.2                         # help='Probability for --aug=fixed', metavar='FLOAT',            type=click.FloatRange(min=0, max=1), default=0.2, show_default=True)
+target: 0.6                    # help='Target value for --aug=ada', metavar='FLOAT',             type=click.FloatRange(min=0, max=1), default=0.6, show_default=True)
+batch_gpu: None                # help='Limit batch size per GPU', metavar='INT',                 type=click.IntRange(min=1))
+cbase: 32768                   # help='Capacity multiplier', metavar='INT',                      type=click.IntRange(min=1), default=32768, show_default=True)
+cmax: 512                      # help='Max. feature maps', metavar='INT',                        type=click.IntRange(min=1), default=512, show_default=True)
+glr: None                      # help='G learning rate  [default: varies]', metavar='FLOAT',     type=click.FloatRange(min=0))
+dlr: 0.002                     # help='D learning rate', metavar='FLOAT',                        type=click.FloatRange(min=0), default=0.002, show_default=True)
+map_depth: 2                   # help='Mapping network depth  [default: varies]', metavar='INT', type=click.IntRange(min=1), default=2, show_default=True)
+mbstd_group: 2                 # help='Minibatch std group size', metavar='INT',                 type=click.IntRange(min=1), default=4, show_default=True)
+
+# Misc settings.
+desc: None                     # help='String to include in result dir name', metavar='STR',     type=str)
+metrics: ['fid50k_full',]      # help='Quality metrics', metavar='[NAME|A,B,C|none]',            type=parse_comma_separated_list, default='fid50k_full', show_default=True)
+kimg: 25000                    # help='Total training duration', metavar='KIMG',                 type=click.IntRange(min=1), default=25000, show_default=True)
+tick: 4                        # help='How often to print progress', metavar='KIMG',             type=click.IntRange(min=1), default=4, show_default=True)
+snap: 50                       # help='How often to save snapshots', metavar='TICKS',            type=click.IntRange(min=1), default=50, show_default=True)
+seed: 0                        # help='Random seed', metavar='INT',                              type=click.IntRange(min=0), default=0, show_default=True)
+fp32: False                    # help='Disable mixed-precision', metavar='BOOL',                 type=bool, default=False, show_default=True)
+nobench: False                 # help='Disable cuDNN benchmarking', metavar='BOOL',              type=bool, default=False, show_default=True)
+workers: 8                     # help='DataLoader worker processes', metavar='INT',              type=click.IntRange(min=1), default=3, show_default=True)
+dry_run: False                 # help='Print training options and exit',                         is_flag=True)
+
+neural_rendering_resolution_initial: 64 # help='Resolution to render at', metavar='INT',  type=click.IntRange(min=1), default=64, required=False)
+neural_rendering_resolution_final: None # help='Final resolution to render at, if blending', metavar='INT',  type=click.IntRange(min=1), required=False, default=None)
+neural_rendering_resolution_fade_kimg: 1000 # help='Kimg to blend resolution over', metavar='INT',  type=click.IntRange(min=0), required=False, default=1000, show_default=True)
+
+blur_fade_kimg: 200            # help='Blur over how many', metavar='INT',  type=click.IntRange(min=1), required=False, default=200)
+gen_pose_cond:  True           # help='If true, enable generator pose conditioning.', metavar='BOOL',  type=bool, required=False, default=True)
+c_scale: 1                     # help='Scale factor for generator pose conditioning.', metavar='FLOAT',  type=click.FloatRange(min=0), required=False, default=1)
+c_noise: 0                     # help='Add noise for generator pose conditioning.', metavar='FLOAT',  type=click.FloatRange(min=0), required=False, default=0)
+gpc_reg_prob: 0.5              # help='Strength of swapping regularization. None means no generator pose conditioning, i.e. condition with zeros.', metavar='FLOAT',  type=click.FloatRange(min=0), required=False, default=0.5)
+gpc_reg_fade_kimg: 1000        # help='Length of swapping prob fade', metavar='INT',  type=click.IntRange(min=0), required=False, default=1000)
+disc_c_noise: 0                # help='Strength of discriminator pose conditioning regularization, in standard deviations.', metavar='FLOAT',  type=click.FloatRange(min=0), required=False, default=0)
+sr_noise_mode: 'none'          # help='Type of noise for superresolution', metavar='STR',  type=click.Choice(['random', 'none']), required=False, default='none')
+resume_blur: False             # help='Enable to blur even on resume', metavar='BOOL',  type=bool, required=False, default=False)
+sr_num_fp16_res: 4             # help='Number of fp16 layers in superresolution', metavar='INT', type=click.IntRange(min=0), default=4, required=False, show_default=True)
+g_num_fp16_res: 0              # help='Number of fp16 layers in generator', metavar='INT', type=click.IntRange(min=0), default=0, required=False, show_default=True)
+d_num_fp16_res: 4              # help='Number of fp16 layers in discriminator', metavar='INT', type=click.IntRange(min=0), default=4, required=False, show_default=True)
+sr_first_cutoff: 2             # help='First cutoff for AF superresolution', metavar='INT', type=click.IntRange(min=2), default=2, required=False, show_default=True)
+sr_first_stopband: 4.2870938501451725  # help='First cutoff for AF superresolution', metavar='FLOAT', type=click.FloatRange(min=2), default=2**2.1, required=False, show_default=True)
+style_mixing_prob: 0.0         # help='Style-mixing regularization probability for training.', metavar='FLOAT', type=click.FloatRange(min=0, max=1), default=0, required=False, show_default=True)
+sr_module: None                # help='Superresolution module override', metavar='STR',  type=str, required=False, default=None)
+density_reg: 0.25              # help='Density regularization strength.', metavar='FLOAT', type=click.FloatRange(min=0), default=0.25, required=False, show_default=True)
+density_reg_every: 4           # help='lazy density reg', metavar='int', type=click.FloatRange(min=1), default=4, required=False, show_default=True)
+density_reg_p_dist: 0.004      # help='density regularization strength.', metavar='FLOAT', type=click.FloatRange(min=0), default=0.004, required=False, show_default=True)
+reg_type: 'l1'                 # help='Type of regularization', metavar='STR',  type=click.Choice(['l1', 'l1-alt', 'monotonic-detach', 'monotonic-fixed', 'total-variation']), required=False, default='l1')
+decoder_lr_mul: 1.0            # help='decoder learning rate multiplier.', metavar='FLOAT', type=click.FloatRange(min=0), default=1, required=False, show_default=True)
+patch_scale: 1.0
+blur_patch_seg: 0
+masked_sampling: 0.
+patch_gan: 0
