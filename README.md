@@ -498,7 +498,7 @@ python generate_lmdb.py --data_dir=<vfhq_root_dir>
 ```
 The scripts will save the files into ./portrait4d/data for training.
 
-To reproduce the results in our paper, we recommand using at least 4 A100 GPUs with 40GB memory and a total batchsize of 32 for training GenHead; For training portrait4D and portrait4D-v2, we recommand using 8 A100 GPUs with 80GB memory and a total batchsize of 32 (a batchsize of 32 causes OOM error on 8 40GB A100 GPUs in our experiments).
+To reproduce the results in our paper, we recommand using at least 4 A100 GPUs with 40GB memory and a total batchsize of 32 for training GenHead; For training portrait4D and portrait4D-v2, we recommand using 8 A100 GPUs with 80GB memory and a total batchsize of 32 (a batchsize of 32 causes OOM error on 8 40GB A100 GPUs in our experiments). Training configurations can be found [here](https://github.com/YuDeng/Portrait-4D/tree/main/portrait4d/configs).
 
 </details>
 
