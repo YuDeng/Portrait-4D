@@ -416,7 +416,7 @@ Portrait-4D/
 cd portrait4d
 python train_genhead.py --cfg=./configs/genhead-ffhq512-toy.yaml
 ```
-By default, experiment results will be saved in ./training-runs-genhead/
+By default, experiment results will be saved in ./portrait4d/training-runs-genhead/
 
 #### To train Portrait4D-v1, run:
 ```
@@ -426,14 +426,14 @@ python train_recon_v1.py --cfg=./configs/portrait4d-genhead512.yaml
 # Static 3D model used for Portrait4D-v2
 python train_recon_v1.py --cfg=./configs/portrait4d-static-genhead512.yaml
 ```
-By default, experiment results will be saved in ./training-runs-portrait4d/.
+By default, experiment results will be saved in ./portrait4d/training-runs-portrait4d/.
 
 #### To train Portrait4D-v2, run:
 ```
 cd portrait4d
 python train_recon_v2.py --cfg=./configs/portrait4d-v2-vfhq512-toy.yaml
 ```
-By default, experiment results will be saved in ./training-runs-portrait4d-v2/. 
+By default, experiment results will be saved in ./portrait4d/training-runs-portrait4d-v2/. 
 </details>
 
 <details>
@@ -511,7 +511,7 @@ python calc_metrics_deform.py --network=<path_to_genhead.pkl> --data=<path_to_lm
 
 ## Citation
 
-Please cite the following papers if this work helps your research:
+Please cite the following papers if they help with your research:
 
     @inproceedings{deng2024portrait4d,
 		title={Portrait4D: Learning One-Shot 4D Head Avatar Synthesis using Synthetic Data},
@@ -527,6 +527,12 @@ Please cite the following papers if this work helps your research:
 	      year={2024}
     }
 
+## Related Projects
+- [GPAvatar](https://github.com/xg-chu/GPAvatar)
+- [Real3DPortrait](https://github.com/yerfor/Real3DPortrait)
+- [GOHA](https://github.com/NVlabs/GOHA)
+- [ROME](https://github.com/SamsungLabs/rome)
+
 ## Acknowledgements
 We thank the following excellent open resources which make this project possible:
 - [Pytorch_FLAME](https://github.com/soubhiksanyal/FLAME_PyTorch) and [DecaFLAME](https://github.com/yfeng95/DECA) for the FLAME model.
@@ -537,12 +543,7 @@ We thank the following excellent open resources which make this project possible
 - [RetinaFace](https://github.com/serengil/retinaface), [H3R](https://github.com/baoshengyu/H3R), [3DFAN](https://github.com/1adrianb/2D-and-3D-face-alignment), [Deep3DFace](https://github.com/sicxu/Deep3DFaceRecon_pytorch), [BFM_to_FLAME](https://github.com/TimoBolkart/BFM_to_FLAME/tree/main), [Mask2Former](https://github.com/facebookresearch/Mask2Former) for face data preprocessing.
 - [LPIPS](https://github.com/richzhang/PerceptualSimilarity) and [InsightFace](https://github.com/deepinsight/insightface/tree/master) for loss computation.
 
-## Related Works
-Here are some related projects for one-shot 4D head avatars:
-- [GPAvatar](https://github.com/xg-chu/GPAvatar)
-- [Real3DPortrait](https://github.com/yerfor/Real3DPortrait)
-- [GOHA](https://github.com/NVlabs/GOHA)
-- [ROME](https://github.com/SamsungLabs/rome)
+
 
 
 
