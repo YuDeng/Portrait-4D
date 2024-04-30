@@ -26,7 +26,7 @@ Portrait4D-v2: Pseudo Multi-View Data Creates Better 4D Head Synthesizer
 - Python>=3.8 and PyTorch>=1.11.0.
 - CUDA toolkit 11.3 or later.
 - One or more high-end NVIDIA GPUs with NVIDIA drivers installed. For training and finetuning, we recommend using 8 Tesla A100 GPUs with 80 GB memory. For inference, a V100 GPU with 32 GB memory is enough.
-- [Pytorch3d](https://github.com/facebookresearch/pytorch3d) and other python libraries. See requirements.txt for full library dependencies.
+- [Pytorch3d](https://github.com/facebookresearch/pytorch3d) and other python libraries. See [requirements.txt](https://github.com/YuDeng/Portrait-4D/blob/main/requirements.txt) for full library dependencies.
 
 ## Installation
 <details>
