@@ -10,7 +10,7 @@ This repository contains the official pytorch implementation of the following pa
 > Yu Deng, Duomin Wang, Xiaohang Ren, Xingyu Chen, Baoyuan Wang </br>
 > Xiaobing.AI
 
-> [**Portrait4D-v2: Pseudo Multi-View Data Creates Better 4D Head Synthesizer**](https://yudeng.github.io/Portrait4D-v2/), arXiv 2024 </br>
+> [**Portrait4D-v2: Pseudo Multi-View Data Creates Better 4D Head Synthesizer**](https://yudeng.github.io/Portrait4D-v2/), ECCV 2024 </br>
 > Yu Deng, Duomin Wang, Baoyuan Wang </br>
 > Xiaobing.AI
 
